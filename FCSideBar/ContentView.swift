@@ -9,8 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isOpen: Bool = false
+    
     var body: some View {
-        Text("Hello, World!")
+        SideBar(isOpen: $isOpen, drawer: {
+            Color(.purple)
+                .edgesIgnoringSafeArea(.all)
+            SideBarListView(isOpen: self.$isOpen)
+        }) {
+            BaseView(isOpen: self.$isOpen)
+        }
     }
 }
 
